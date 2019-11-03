@@ -7,7 +7,7 @@ public class Goblin : MonoBehaviour
 {
 
     
-    void OnClick ()
+    void OnMouseDown ()
     {
         Collect();
     }
