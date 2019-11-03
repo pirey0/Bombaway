@@ -12,4 +12,11 @@ public interface IPickupable
 {
     void PickUp();
     void Release();
+    Rigidbody2D GetRigidbody();
+    Transform GetTransform();
+}
+
+public interface IClickable
+{
+    void Click();
 }

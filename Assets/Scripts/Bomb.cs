@@ -94,11 +94,21 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
     public void PickUp()
     {
-        rigidbody.simulated = false;
+        rigidbody.gravityScale = 0;
     }
 
     public void Release()
     {
-        rigidbody.simulated = true;
+        rigidbody.gravityScale = 1;
+    }
+
+    public Rigidbody2D GetRigidbody()
+    {
+        return rigidbody;
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 }
