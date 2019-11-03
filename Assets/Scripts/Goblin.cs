@@ -4,12 +4,8 @@ using UnityEngine;
 using NaughtyAttributes;
 using System;
 
-public class Goblin : MonoBehaviour, IEffectable
+public class Goblin : MonoBehaviour, IEffectable, IClickable
 {
-    void OnMouseDown ()
-    {
-        Collect();
-    }
 
     [Button]
     void Collect ()
@@ -22,5 +18,10 @@ public class Goblin : MonoBehaviour, IEffectable
     {
         Debug.Log("Goblin died through explosion");
         Destroy(gameObject);
+    }
+
+    public void Click()
+    {
+        Collect();
     }
 }
