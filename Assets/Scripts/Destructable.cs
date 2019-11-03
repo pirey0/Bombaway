@@ -7,6 +7,7 @@ public class Destructable : MonoBehaviour, IEffectable
 {
     public void Explode(Bomb source)
     {
+        Debug.Log(name + " destroyed by explosion");
         Destroy(gameObject);
     }
 }

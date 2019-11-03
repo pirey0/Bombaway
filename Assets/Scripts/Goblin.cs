@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using System;
 
-public class Goblin : MonoBehaviour
+public class Goblin : MonoBehaviour, IEffectable
 {
-
-    
     void OnMouseDown ()
     {
         Collect();
@@ -16,6 +15,12 @@ public class Goblin : MonoBehaviour
     void Collect ()
     {
         GoblinCounter.AddGoblin();
+        Destroy(gameObject);
+    }
+
+    public void Explode(Bomb source)
+    {
+        Debug.Log("Goblin died through explosion");
         Destroy(gameObject);
     }
 }
