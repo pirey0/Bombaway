@@ -7,15 +7,18 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 {
     [SerializeField] float triggerDuration;
     [SerializeField] float explosionRadius;
+    [SerializeField] AnimationClip fuseAnimation;
 
     private bool triggered, exploded;
     private float triggerTime;
 
     Rigidbody2D rigidbody;
+    Animator animator;
 
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -42,6 +45,11 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
             return;
         }
 
+
+        Debug.Log("Bomb triggered");
+
+        animator?.Play(fuseAnimation.name);
+        animator.speed = 1/triggerDuration;
         triggered = true;
         triggerTime = Time.time;
     }
@@ -49,6 +57,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
     [Button]
     public void Explode()
     {
+        Debug.Log("Bomb explodes");
         exploded = true;
 
         var effectables = GameObject.FindGameObjectsWithTag("Effectable");
@@ -69,6 +78,8 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
                 effectable.Explode(this);
             }
         }
+
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()
