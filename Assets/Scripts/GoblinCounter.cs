@@ -5,9 +5,9 @@ using UnityEngine;
 public class GoblinCounter : MonoBehaviour
 {
     public static GoblinCounter instance;
-    int count = 0;
+    int count;
+    int totalGoblins;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (instance == null)
@@ -17,6 +17,8 @@ public class GoblinCounter : MonoBehaviour
         {
             Destroy(this);
         }
+
+        totalGoblins = GameObject.FindObjectsOfType<Goblin>().Length;
     }
 
     public static void AddGoblin ()
@@ -27,6 +29,6 @@ public class GoblinCounter : MonoBehaviour
 
     void OnGUI ()
     {
-        GUI.Box(new Rect(100,100,100,100),"Goblis: " + count);
+        GUI.Box(new Rect(100,100,100,100),"Goblis: " + count + "/ " + totalGoblins);
     }
 }
