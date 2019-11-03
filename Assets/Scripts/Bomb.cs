@@ -94,6 +94,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
     public void PickUp()
     {
+        TriggerFuse();
         rigidbody.gravityScale = 0;
     }
 

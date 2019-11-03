@@ -21,7 +21,7 @@ public class PickupHandler : MonoBehaviour
         bool clicked = Input.GetMouseButton(0);
 
         var raycastTarget = Raycast();
-
+        Debug.Log("RT: " + raycastTarget + " " + pickup);
 
         if(pickup == null)
         {
