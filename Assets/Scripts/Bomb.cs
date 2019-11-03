@@ -30,6 +30,11 @@ public class Bomb : MonoBehaviour
     [Button]
     public void TriggerFuse()
     {
+        if(triggered || exploded)
+        {
+            return;
+        }
+
         triggered = true;
         triggerTime = Time.time;
     }
