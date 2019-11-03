@@ -59,7 +59,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 4.1274743
+  m_PointLightOuterRadius: 0
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -4846,6 +4846,8 @@ MonoBehaviour:
   triggerDuration: 5
   explosionRadius: 3
   fuseAnimation: {fileID: 7400000, guid: ac42b82829b1b574a9a78f05f67ce27e, type: 2}
+  pointLightRadiusIn: 3
+  pointLightRadiusOut: 4
 --- !u!50 &921573406
 Rigidbody2D:
   serializedVersion: 4

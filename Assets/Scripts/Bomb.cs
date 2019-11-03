@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Bomb : MonoBehaviour, IEffectable, IPickupable
 {
     [SerializeField] float triggerDuration;
     [SerializeField] float explosionRadius;
     [SerializeField] AnimationClip fuseAnimation;
+    [SerializeField] float pointLightRadiusIn, pointLightRadiusOut;
+    
 
     private bool triggered, exploded;
     private float triggerTime;
-
+     
     Rigidbody2D rigidbody;
     Animator animator;
+    Light2D light2d;
 
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        light2d = GetComponentInChildren<Light2D>();
     }
 
     private void Update()
@@ -52,6 +57,9 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
         animator.speed = 1/triggerDuration;
         triggered = true;
         triggerTime = Time.time;
+
+        light2d.pointLightOuterRadius = pointLightRadiusOut;
+        light2d.pointLightInnerRadius = pointLightRadiusIn;
     }
 
     [Button]
