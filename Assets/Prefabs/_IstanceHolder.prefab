@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5454148747328122041}
   - component: {fileID: 5454148747328122040}
+  - component: {fileID: 5454148746004113230}
   m_Layer: 0
   m_Name: _IstanceHolder
   m_TagString: Untagged
@@ -43,3 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3580645e8717f43bf0c2e062c9aec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5454148746004113230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454148747328122047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f868c15ab29896e429e3d61eefbaf2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdForce: 10
