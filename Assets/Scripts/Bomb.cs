@@ -59,4 +59,9 @@ public class Bomb : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
 }
