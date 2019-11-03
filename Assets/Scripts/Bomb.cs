@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class Bomb : MonoBehaviour
+public class Bomb : MonoBehaviour, IEffectable, IPickupable
 {
     [SerializeField] float triggerDuration;
     [SerializeField] float explosionRadius;
 
     private bool triggered, exploded;
     private float triggerTime;
+
+    Rigidbody2D rigidbody;
+
+    private void Start()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
@@ -69,4 +76,18 @@ public class Bomb : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
+    public void Explode(Bomb source)
+    {
+        TriggerFuse();
+    }
+
+    public void PickUp()
+    {
+        rigidbody.simulated = false;
+    }
+
+    public void Release()
+    {
+        rigidbody.simulated = true;
+    }
 }
