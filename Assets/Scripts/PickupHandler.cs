@@ -48,8 +48,16 @@ public class PickupHandler : MonoBehaviour
         }
         else
         {
+            if(pickup.GetTransform() == null)
+            {
+                pickup = null;
+                return;
+            }
+            
             Vector3 force = (GetMousePos() - pickup.GetTransform().position) * holdForce * Time.deltaTime;
+            
             pickup.GetRigidbody().AddForce(force);
+            pickup.GetRigidbody().velocity = pickup.GetRigidbody().velocity * 0.9f;
 
             if (!clicked)
             {

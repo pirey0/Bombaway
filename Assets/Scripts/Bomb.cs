@@ -110,6 +110,9 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
     public Transform GetTransform()
     {
+        if (exploded)
+            return null;
+
         return transform;
     }
 }
