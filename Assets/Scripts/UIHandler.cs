@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIHandler : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class UIHandler : MonoBehaviour
     RectTransform goblinUIParent;
     [SerializeField]
     GameObject goblinUIPrefab;
+
+    [SerializeField]
+    GameObject scoreSection;
+    [SerializeField]
+    TextMeshProUGUI scoreGnomes, scoreBombs, score; 
 
     void Update ()
     {
@@ -48,9 +54,22 @@ public class UIHandler : MonoBehaviour
         }
     }
 
+    public void ShowFinalScore (int gnomesCollected, int gnomesMax, int bombsLeft, int scoreFinal)
+    {
+        scoreSection.SetActive(true);
+        scoreGnomes.text = gnomesCollected + " / " + gnomesMax + " Gnomes saved";
+        scoreGnomes.text = bombsLeft + " Gnomes saved";
+        score.text = scoreFinal.ToString();
+    }
+
     public void ReturnToMenue()
     {
         SceneManager.LoadScene(StartSceneName);
+    }
+
+    public void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Restart()
