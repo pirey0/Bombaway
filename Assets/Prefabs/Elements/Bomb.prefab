@@ -4844,13 +4844,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerDuration: 5
-  explosionRadius: 2
+  explosionRadius: 2.5
   fuseAnimation: {fileID: 7400000, guid: ac42b82829b1b574a9a78f05f67ce27e, type: 2}
   pointLightRadiusIn: 3
   pointLightRadiusOut: 4
   explosionPrefab: {fileID: 8340984525721318970, guid: 2a2c4f0de59d25d4aa52f2e69d1a8c1c,
     type: 3}
   explosionForce: 100
+  scorePerExplosion: 0
 --- !u!50 &921573406
 Rigidbody2D:
   serializedVersion: 4
@@ -5010,6 +5011,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133704841451081734}
     m_Modifications:
+    - target: {fileID: 2472252908391726220, guid: 7b62b76831fb24347a94d12b38561744,
+        type: 3}
+      propertyPath: m_Name
+      value: bombTop
+      objectReference: {fileID: 0}
     - target: {fileID: 656796469193391888, guid: 7b62b76831fb24347a94d12b38561744,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5079,11 +5085,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.62172
-      objectReference: {fileID: 0}
-    - target: {fileID: 2472252908391726220, guid: 7b62b76831fb24347a94d12b38561744,
-        type: 3}
-      propertyPath: m_Name
-      value: bombTop
       objectReference: {fileID: 0}
     - target: {fileID: 8437343922021541383, guid: 7b62b76831fb24347a94d12b38561744,
         type: 3}

@@ -124,3 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructedVersion: {fileID: 6504250169625453382, guid: 4dc39266b0bdaf64e83c2d9269182ea7,
     type: 3}
+  scorePerExplode: 10

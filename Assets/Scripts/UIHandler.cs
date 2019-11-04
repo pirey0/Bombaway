@@ -87,7 +87,7 @@ public class UIHandler : Singleton<UIHandler>
     {
         scoreSection.SetActive(true);
         scoreGnomes.text = gnomesCollected + " / " + gnomesMax + " Gnomes saved";
-        scoreGnomes.text = bombsLeft + " Gnomes saved";
+        scoreBombs.text = bombsLeft + " bombs left";
         score.text = scoreFinal.ToString();
     }
 
@@ -98,6 +98,7 @@ public class UIHandler : Singleton<UIHandler>
 
     public void NextScene()
     {
+        Debug.Log("TRYING TO LOAD NEXT SCENE");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
