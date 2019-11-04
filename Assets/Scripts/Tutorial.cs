@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
@@ -9,32 +11,56 @@ public class Tutorial : MonoBehaviour
     int currentStep = -1;
 
     [SerializeField] Transform light;
+    [SerializeField] TMP_Text text;
+    [SerializeField] Granpa granpa;
+
+
+    private void Start()
+    {
+        granpa.PlayIntro();
+    }
 
     [Button]
-    void NextStep()
+    public void NextStep()
     {
         currentStep++;
 
-        if (currentStep >= steps.Length)
+        if (currentStep == steps.Length)
+        {
+            granpa.PlayOutro();
             return;
+        }
+        else if(currentStep > steps.Length)
+        {
+            //SCORE
+        }
+
 
         Step step = steps[currentStep];
 
-        light.position = step.lightPosition.position;
-        
+        if (step.lightPosition == null)
+        {
+            light.position = new Vector3(-100, -100);
+        }
+        else
+        {
+            light.position = step.lightPosition.position;
+        }
 
+        text.text = step.text;
+
+        if (step.makeGnomeTalk)
+        {
+            granpa.PlayTalk();
+        }
     }
 
-
-
-
+    [System.Serializable]
     public class Step
     {
         public Transform lightPosition;
-
-        [TextArea(2,10)]
-        public string text;
-
+        [TextArea(2,10)] public string text;
+        public bool makeGnomeTalk;
 
     }
 }
