@@ -122,3 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bfa59834e36e04db1dfffa6ff68ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destructedVersion: {fileID: 6504250169625453382, guid: 4dc39266b0bdaf64e83c2d9269182ea7,
+    type: 3}

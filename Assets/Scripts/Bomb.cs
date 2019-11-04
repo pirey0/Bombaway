@@ -10,7 +10,8 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
     [SerializeField] float explosionRadius;
     [SerializeField] AnimationClip fuseAnimation;
     [SerializeField] float pointLightRadiusIn, pointLightRadiusOut;
-    
+    [SerializeField] GameObject explosionPrefab;
+    [SerializeField] float explosionForce;
 
     private bool triggered, exploded;
     private float triggerTime;
@@ -87,6 +88,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
             }
         }
 
+        Instantiate(explosionPrefab,transform.position,Quaternion.identity);
         Destroy(gameObject);
     }
 
@@ -97,6 +99,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
     public void Explode(Bomb source)
     {
+        rigidbody.AddForce((transform.position - source.transform.position) * explosionForce);
         TriggerFuse();
     }
 
