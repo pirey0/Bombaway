@@ -7,6 +7,9 @@ using System;
 public class Goblin : MonoBehaviour, IEffectable, IClickable
 {
 
+    [SerializeField]
+    GameObject destroyedGoblin;
+
     [Button]
     void Collect ()
     {
@@ -17,6 +20,10 @@ public class Goblin : MonoBehaviour, IEffectable, IClickable
     public void Explode(Bomb source)
     {
         Debug.Log("Goblin died through explosion");
+
+        if (destroyedGoblin != null)
+            Instantiate(destroyedGoblin, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 

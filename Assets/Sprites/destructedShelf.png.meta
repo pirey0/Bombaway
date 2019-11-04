@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: -6652952486125707175
     second: destructedShelf_1
+  - first:
+      213: -1422860325969375082
+    second: destructedShelf_2
+  - first:
+      213: -7031241010014973323
+    second: destructedShelf_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -100,7 +106,7 @@ TextureImporter:
         width: 2
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,7 +127,7 @@ TextureImporter:
         width: 2
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,6 +135,48 @@ TextureImporter:
       bones: []
       spriteID: f393fb479e0ea294dbc32bfe700722bf
       internalID: -6652952486125707175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: destructedShelf_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc599bad58088f548bb5781fa285fead
+      internalID: -1422860325969375082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: destructedShelf_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 0
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb96512c738fb0148b290bd526d7ffca
+      internalID: -7031241010014973323
       vertices: []
       indices: 
       edges: []

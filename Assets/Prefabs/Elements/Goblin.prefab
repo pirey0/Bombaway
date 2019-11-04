@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2c16f9de39f2942a7a73ef4fa4b572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyedGoblin: {fileID: 2376994287452440114, guid: ae72ea299b7729c4babbbb6716fa17e1,
+    type: 3}
 --- !u!1001 &3982351982468228882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,11 +102,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 615103194649007245}
     m_Modifications:
-    - target: {fileID: -7826874056376096239, guid: ed060754d3d37db43a006d4a786c2d15,
-        type: 3}
-      propertyPath: m_Name
-      value: goblin
-      objectReference: {fileID: 0}
     - target: {fileID: 8813280634906758198, guid: ed060754d3d37db43a006d4a786c2d15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -159,6 +156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7826874056376096239, guid: ed060754d3d37db43a006d4a786c2d15,
+        type: 3}
+      propertyPath: m_Name
+      value: goblin
       objectReference: {fileID: 0}
     - target: {fileID: -6060842894531113814, guid: ed060754d3d37db43a006d4a786c2d15,
         type: 3}
