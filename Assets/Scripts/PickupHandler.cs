@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PickupHandler : MonoBehaviour
+public class PickupHandler : Singleton<PickupHandler>
 {
     [SerializeField] float holdForce;
 
@@ -11,6 +12,11 @@ public class PickupHandler : MonoBehaviour
     Camera camera;
 
     private void Start()
+    {
+        camera = Camera.main;
+    }
+
+    protected override void OnSceneChanged(Scene arg0, Scene arg1)
     {
         camera = Camera.main;
     }

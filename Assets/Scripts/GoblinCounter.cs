@@ -1,30 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GoblinCounter : MonoBehaviour
+public class GoblinCounter : Singleton<GoblinCounter>
 {
-    public static GoblinCounter instance;
+    [SerializeField] int scorePerGoblin;
+
     int count;
     int totalGoblins;
 
+    public static event System.Action CollectedAllGoblins;
+
     void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        } else
-        {
-            Destroy(this);
-        }
-
         totalGoblins = GameObject.FindObjectsOfType<Goblin>().Length;
+        count = 0;
+    }
+
+    protected override void OnSceneChanged(Scene arg0, Scene arg1)
+    {
+        totalGoblins = GameObject.FindObjectsOfType<Goblin>().Length;
+        count = 0;
     }
 
     public static void AddGoblin ()
     {
-        if (instance != null)
-            instance.count++;
+        if(Instance == null)
+        {
+            return;
+        }
+
+        Instance.count++;
+        Score.Add(Instance.scorePerGoblin);
+
+        if(Instance.totalGoblins <= Instance.count)
+        {
+            CollectedAllGoblins?.Invoke();
+        }
+
     }
 
     void OnGUI ()

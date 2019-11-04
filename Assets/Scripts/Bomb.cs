@@ -6,12 +6,15 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Bomb : MonoBehaviour, IEffectable, IPickupable
 {
+    public static event System.Action OutOfBombs;
+
     [SerializeField] float triggerDuration;
     [SerializeField] float explosionRadius;
     [SerializeField] AnimationClip fuseAnimation;
     [SerializeField] float pointLightRadiusIn, pointLightRadiusOut;
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] float explosionForce;
+    [SerializeField] int scorePerExplosion;
 
     private bool triggered, exploded;
     private float triggerTime;
@@ -90,6 +93,16 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
         Instantiate(explosionPrefab,transform.position,Quaternion.identity);
         Destroy(gameObject);
+
+        Score.Add(scorePerExplosion);
+
+        var bs = GameObject.FindObjectsOfType<Bomb>();
+        Debug.Log("Bombs Left: " + (bs.Length -1));
+
+        if(bs.Length <=1)
+        {
+            OutOfBombs?.Invoke();
+        }
     }
 
     private void OnDrawGizmos()
