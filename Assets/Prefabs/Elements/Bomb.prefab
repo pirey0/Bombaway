@@ -4844,7 +4844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerDuration: 5
-  explosionRadius: 3
+  explosionRadius: 2
   fuseAnimation: {fileID: 7400000, guid: ac42b82829b1b574a9a78f05f67ce27e, type: 2}
   pointLightRadiusIn: 3
   pointLightRadiusOut: 4
