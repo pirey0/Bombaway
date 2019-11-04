@@ -8,6 +8,8 @@ public class Destructable : MonoBehaviour, IEffectable
     [SerializeField]
     GameObject destructedVersion;
 
+    [SerializeField] int scorePerExplode;
+
     public void Explode(Bomb source)
     {
         Debug.Log(name + " destroyed by explosion");
@@ -17,6 +19,7 @@ public class Destructable : MonoBehaviour, IEffectable
             Instantiate(destructedVersion, transform.position, Quaternion.identity);
         }
 
+        Score.Add(scorePerExplode);
         Destroy(gameObject);
     }
 }
