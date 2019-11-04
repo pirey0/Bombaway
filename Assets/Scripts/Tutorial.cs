@@ -14,7 +14,6 @@ public class Tutorial : MonoBehaviour
     [SerializeField] TMP_Text text;
     [SerializeField] Granpa granpa;
 
-
     private void Start()
     {
         granpa.PlayIntro();

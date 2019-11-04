@@ -27,7 +27,6 @@ public class PickupHandler : Singleton<PickupHandler>
         bool clicked = Input.GetMouseButton(0);
 
         var raycastTarget = Raycast();
-        Debug.Log("RT: " + raycastTarget + " " + pickup);
 
         if(pickup == null)
         {

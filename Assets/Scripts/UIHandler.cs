@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
-public class UIHandler : MonoBehaviour
+public class UIHandler : Singleton<UIHandler>
 {
     [SerializeField] string StartSceneName = "StartScene";
     [SerializeField]
@@ -16,7 +17,35 @@ public class UIHandler : MonoBehaviour
     [SerializeField]
     GameObject scoreSection;
     [SerializeField]
-    TextMeshProUGUI scoreGnomes, scoreBombs, score; 
+    TextMeshProUGUI scoreGnomes, scoreBombs, score;
+
+    private void Start()
+    {
+        Bomb.OutOfBombs += OnEnd;
+        GoblinCounter.CollectedAllGoblins += OnEnd;
+        GoblinCounter.GoblinAdded += OnGoblinAdded;
+
+        gameObject.SetActive(false);
+    }
+
+    private void OnGoblinAdded()
+    {
+        UpdateGoblinUI(GoblinCounter.Instance.CollectedGoblins, GoblinCounter.Instance.TotalGoblins);
+    }
+
+    private void OnEnd()
+    {
+        var bombs = GameObject.FindObjectsOfType<Bomb>();
+
+        ShowFinalScore(GoblinCounter.Instance.CollectedGoblins, GoblinCounter.Instance.TotalGoblins, bombs.Length, Score.Instance.Amount);
+    }
+
+    protected override void OnSceneChanged(Scene arg0, Scene arg1)
+    {
+        gameObject.SetActive(true);
+        scoreSection.SetActive(false);
+        UpdateGoblinUI(0, GoblinCounter.Instance.TotalGoblins);
+    }
 
     void Update ()
     {

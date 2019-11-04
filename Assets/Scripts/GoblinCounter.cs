@@ -11,6 +11,10 @@ public class GoblinCounter : Singleton<GoblinCounter>
     int totalGoblins;
 
     public static event System.Action CollectedAllGoblins;
+    public static event System.Action GoblinAdded;
+
+    public int CollectedGoblins { get => Instance.count; }
+    public int TotalGoblins { get => Instance.totalGoblins; }
 
     void Start()
     {
@@ -33,6 +37,7 @@ public class GoblinCounter : Singleton<GoblinCounter>
 
         Instance.count++;
         Score.Add(Instance.scorePerGoblin);
+        GoblinAdded?.Invoke();
 
         if(Instance.totalGoblins <= Instance.count)
         {
@@ -41,8 +46,4 @@ public class GoblinCounter : Singleton<GoblinCounter>
 
     }
 
-    void OnGUI ()
-    {
-        GUI.Box(new Rect(100,100,100,100),"Goblis: " + count + "/ " + totalGoblins);
-    }
 }
