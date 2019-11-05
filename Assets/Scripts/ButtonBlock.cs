@@ -14,6 +14,12 @@ public class ButtonBlock : MonoBehaviour, IEffectable
 
     public void Explode(Bomb source)
     {
+        Invoke("Effect", 1f);
+    }
+
+
+    private void Effect()
+    {
         if (isExit)
         {
             Debug.Log("Application Quit");
@@ -26,6 +32,5 @@ public class ButtonBlock : MonoBehaviour, IEffectable
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         }
     }
-
    
 }
