@@ -2852,7 +2852,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 258
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -6797,11 +6797,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steps:
   - lightPosition: {fileID: 0}
-    text: How are you doing grandson*daughter? Have you seen my garden gnomes?
+    text: How are you doing grandson*daughter? Have you seen my garden goblins?
     makeGnomeTalk: 1
   - lightPosition: {fileID: 1004693549}
     text: I Remember hiding them here somewhere before the war... Woudn't want those
-      bloody nazis to get my gnomes..
+      bloody nazis to get my goblins...
     makeGnomeTalk: 1
   - lightPosition: {fileID: 1374575992}
     text: If you go looking for them, be careful! I remember leaving some bombs around....
@@ -6814,7 +6814,7 @@ MonoBehaviour:
     text: And they might also make other bombs explode...
     makeGnomeTalk: 1
   - lightPosition: {fileID: 1084930568}
-    text: Still... you could use them to find other gnomes...
+    text: Still... you could use them to find other gnomes... Just drag them around!!
     makeGnomeTalk: 1
   light: {fileID: 1542428102}
   text: {fileID: 841415410}
@@ -8821,7 +8821,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -55, y: 33}
+  m_AnchoredPosition: {x: -504, y: 228}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2036248452
@@ -8896,7 +8896,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
