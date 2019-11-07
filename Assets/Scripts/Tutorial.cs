@@ -4,6 +4,8 @@ using UnityEngine;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System;
 
 public class Tutorial : MonoBehaviour
 {
@@ -12,6 +14,15 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] Transform light;
     [SerializeField] TMP_Text text;
+    [SerializeField] GameObject nextButton;
+
+    List<int> stepsThatNeedToGetEnabled = new List<int>();
+
+    internal void AddStepThatNeedsToGetEnabled(int step)
+    {
+        stepsThatNeedToGetEnabled.Add(step);
+    }
+
     [SerializeField] Granpa granpa;
 
     private void Start()
@@ -19,39 +30,64 @@ public class Tutorial : MonoBehaviour
         granpa.PlayIntro();
     }
 
+    internal void EnableStep(int stepToEnable)
+    {
+        stepsThatNeedToGetEnabled.Remove(stepToEnable);
+
+        if (!stepsThatNeedToGetEnabled.Contains(currentStep + 1))
+        {
+            SetActiveTutorialArrow(true);
+        }
+
+    }
+
     [Button]
     public void NextStep()
     {
-        currentStep++;
-
-        if (currentStep == steps.Length)
+        if (!stepsThatNeedToGetEnabled.Contains(currentStep + 1))
         {
-            granpa.PlayOutro();
-            return;
-        }
-        else if(currentStep > steps.Length)
-        {
-            //SCORE
+
+            currentStep++;
+
+            if (currentStep == steps.Length)
+            {
+                granpa.PlayOutro();
+                SetActiveTutorialArrow(false);
+                return;
+            }
+            else if (currentStep > steps.Length)
+            {
+                //SCORE
+                return;
+            }
+
+            Step step = steps[currentStep];
+		    
+            if (step.lightPosition == null)
+            {
+                light.position = new Vector3(-100, -100);
+            }
+            else
+            {
+                light.position = step.lightPosition.position;
+            }
+		    
+            text.text = step.text;
+		    
+            if (step.makeGnomeTalk)
+            {
+                granpa.PlayTalk();
+            }
         }
 
-
-        Step step = steps[currentStep];
-
-        if (step.lightPosition == null)
-        {
-            light.position = new Vector3(-100, -100);
+        if (stepsThatNeedToGetEnabled.Contains(currentStep+1)) {
+            SetActiveTutorialArrow(false);
         }
-        else
-        {
-            light.position = step.lightPosition.position;
-        }
+    }
 
-        text.text = step.text;
-
-        if (step.makeGnomeTalk)
-        {
-            granpa.PlayTalk();
-        }
+    void SetActiveTutorialArrow(bool status) {
+        if (nextButton != null)
+            nextButton.SetActive(status);
     }
 
     [System.Serializable]

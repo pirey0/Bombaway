@@ -64,7 +64,7 @@ public class UIHandler : Singleton<UIHandler>
         {
             Transform child = goblinUIParent.GetChild(i);
             if (child != null)
-                Destroy(child);
+                Destroy(child.gameObject);
         }
 
         for (int i = 0; i < max; i++)
