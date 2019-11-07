@@ -39,6 +39,9 @@ public class Tutorial : MonoBehaviour
             SetActiveTutorialArrow(true);
         }
 
+        //try next step
+        NextStep();
+
     }
 
     [Button]
