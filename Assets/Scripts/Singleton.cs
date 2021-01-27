@@ -22,6 +22,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
             if (dontDestroyOnLoad)
             {
                 DontDestroyOnLoad(gameObject);
+                UnityEngine.SceneManagement.SceneManager.activeSceneChanged += OnSceneChanged;
             }
         }
         else
@@ -38,7 +39,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
             }
         }
 
-        UnityEngine.SceneManagement.SceneManager.activeSceneChanged += OnSceneChanged;
+
     }
 
     protected virtual void OnSceneChanged(Scene arg0, Scene arg1)
@@ -53,6 +54,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
         {
             instance = null;
             Debug.LogWarning("Destroying Singleton for " + typeof(T));
+            UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= OnSceneChanged;
         }
     }
 

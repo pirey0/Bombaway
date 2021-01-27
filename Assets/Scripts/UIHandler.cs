@@ -40,6 +40,8 @@ public class UIHandler : Singleton<UIHandler>
         ShowFinalScore(GoblinCounter.Instance.CollectedGoblins, GoblinCounter.Instance.TotalGoblins, bombs.Length, Score.Instance.Amount);
     }
 
+
+
     protected override void OnSceneChanged(Scene arg0, Scene arg1)
     {
         gameObject.SetActive(true);
@@ -47,12 +49,13 @@ public class UIHandler : Singleton<UIHandler>
         UpdateGoblinUI(0, GoblinCounter.Instance.TotalGoblins);
     }
 
-    void Update ()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
             Restart();
-        } else if (Input.GetKeyDown(KeyCode.Escape))
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             ReturnToMenue();
         }
@@ -60,7 +63,7 @@ public class UIHandler : Singleton<UIHandler>
 
     void UpdateGoblinUI(int found, int max)
     {
-        for (int i = goblinUIParent.childCount-1;  i >= 0; i--)
+        for (int i = goblinUIParent.childCount - 1; i >= 0; i--)
         {
             Transform child = goblinUIParent.GetChild(i);
             if (child != null)
@@ -69,7 +72,7 @@ public class UIHandler : Singleton<UIHandler>
 
         for (int i = 0; i < max; i++)
         {
-            GameObject goblin = Instantiate(goblinUIPrefab,goblinUIParent);
+            GameObject goblin = Instantiate(goblinUIPrefab, goblinUIParent);
             goblin.transform.localPosition = (Vector3.right * 60 * i);
 
             if (i >= found)
@@ -83,7 +86,7 @@ public class UIHandler : Singleton<UIHandler>
         }
     }
 
-    public void ShowFinalScore (int gnomesCollected, int gnomesMax, int bombsLeft, int scoreFinal)
+    public void ShowFinalScore(int gnomesCollected, int gnomesMax, int bombsLeft, int scoreFinal)
     {
         scoreSection.SetActive(true);
         scoreGnomes.text = gnomesCollected + " / " + gnomesMax + " Gnomes saved";

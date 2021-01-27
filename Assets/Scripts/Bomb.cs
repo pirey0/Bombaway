@@ -18,7 +18,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
     private bool triggered, exploded;
     private float triggerTime;
-     
+
     Rigidbody2D rigidbody;
     Animator animator;
     Light2D light2d;
@@ -39,7 +39,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
         if (triggered)
         {
-            if(Time.time - triggerTime >= triggerDuration)
+            if (Time.time - triggerTime >= triggerDuration)
             {
                 Explode();
             }
@@ -49,7 +49,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
     [Button]
     public void TriggerFuse()
     {
-        if(triggered || exploded)
+        if (triggered || exploded)
         {
             return;
         }
@@ -58,7 +58,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
         Debug.Log("Bomb triggered");
 
         animator?.Play(fuseAnimation.name);
-        animator.speed = 1/triggerDuration;
+        animator.speed = 1 / triggerDuration;
         triggered = true;
         triggerTime = Time.time;
 
@@ -78,28 +78,28 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
         {
             var effectable = ef.GetComponent<IEffectable>();
 
-            if(effectable == null)
+            if (effectable == null)
             {
                 continue;
             }
 
-           var dist = Vector3.Distance(transform.position, ef.transform.position);
+            var dist = Vector3.Distance(transform.position, ef.transform.position);
 
-            if(dist <= explosionRadius)
+            if (dist <= explosionRadius)
             {
                 effectable.Explode(this);
             }
         }
 
-        Instantiate(explosionPrefab,transform.position,Quaternion.identity);
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
 
         Score.Add(scorePerExplosion);
 
         var bs = GameObject.FindObjectsOfType<Bomb>();
-        Debug.Log("Bombs Left: " + (bs.Length -1));
+        Debug.Log("Bombs Left: " + (bs.Length - 1));
 
-        if(bs.Length <=1)
+        if (bs.Length <= 1)
         {
             OutOfBombs?.Invoke();
         }
@@ -134,7 +134,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
     public Transform GetTransform()
     {
-        if (exploded)
+        if (exploded || this == null)
             return null;
 
         return transform;
