@@ -10,8 +10,8 @@ public class GoblinCounter : Singleton<GoblinCounter>
     int count;
     int totalGoblins;
 
-    public static event System.Action CollectedAllGoblins;
-    public static event System.Action GoblinAdded;
+    public event System.Action CollectedAllGoblins;
+    public event System.Action GoblinAdded;
 
     public int CollectedGoblins { get => Instance.count; }
     public int TotalGoblins { get => Instance.totalGoblins; }
@@ -22,13 +22,7 @@ public class GoblinCounter : Singleton<GoblinCounter>
         count = 0;
     }
 
-    protected override void OnSceneChanged(Scene arg0, Scene arg1)
-    {
-        totalGoblins = GameObject.FindObjectsOfType<Goblin>().Length;
-        count = 0;
-    }
-
-    public static void AddGoblin ()
+    public void AddGoblin ()
     {
         if(Instance == null)
         {
@@ -36,7 +30,8 @@ public class GoblinCounter : Singleton<GoblinCounter>
         }
 
         Instance.count++;
-        Score.Add(Instance.scorePerGoblin);
+        Score.Instance.Add(Instance.scorePerGoblin);
+
         GoblinAdded?.Invoke();
 
         if(Instance.totalGoblins <= Instance.count)

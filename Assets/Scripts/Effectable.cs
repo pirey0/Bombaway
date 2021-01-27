@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEffectable
+public interface IEffectable 
 {
     void Explode(Bomb source);
 

@@ -19,7 +19,7 @@ public class Destructable : MonoBehaviour, IEffectable
             Instantiate(destructedVersion, transform.position, Quaternion.identity);
         }
 
-        Score.Add(scorePerExplode);
+        Score.Instance.Add(scorePerExplode);
         Destroy(gameObject);
     }
 }

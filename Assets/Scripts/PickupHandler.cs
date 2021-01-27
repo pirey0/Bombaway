@@ -16,10 +16,6 @@ public class PickupHandler : Singleton<PickupHandler>
         camera = Camera.main;
     }
 
-    protected override void OnSceneChanged(Scene arg0, Scene arg1)
-    {
-        camera = Camera.main;
-    }
 
     private void Update()
     {
@@ -71,15 +67,12 @@ public class PickupHandler : Singleton<PickupHandler>
             }
         }
 
-
-        
     }
 
     private Vector3 GetMousePos()
     {
         var ray = camera.ScreenPointToRay(Input.mousePosition);
         Plane p = new Plane(Vector3.forward, Vector3.zero);
-
         float outDist;
         if(p.Raycast(ray, out outDist))
         {

@@ -13,7 +13,7 @@ public class Goblin : MonoBehaviour, IEffectable, IClickable
     [Button]
     void Collect ()
     {
-        GoblinCounter.AddGoblin();
+        GoblinCounter.Instance.AddGoblin();
         Destroy(gameObject);
     }
 

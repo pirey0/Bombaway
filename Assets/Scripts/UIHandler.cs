@@ -22,10 +22,12 @@ public class UIHandler : Singleton<UIHandler>
     private void Start()
     {
         Bomb.OutOfBombs += OnEnd;
-        GoblinCounter.CollectedAllGoblins += OnEnd;
-        GoblinCounter.GoblinAdded += OnGoblinAdded;
+        GoblinCounter.Instance.CollectedAllGoblins += OnEnd;
+        GoblinCounter.Instance.GoblinAdded += OnGoblinAdded;
 
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
+        scoreSection.SetActive(false);
+        UpdateGoblinUI(0, GoblinCounter.Instance.TotalGoblins);
     }
 
     private void OnGoblinAdded()
@@ -40,14 +42,6 @@ public class UIHandler : Singleton<UIHandler>
         ShowFinalScore(GoblinCounter.Instance.CollectedGoblins, GoblinCounter.Instance.TotalGoblins, bombs.Length, Score.Instance.Amount);
     }
 
-
-
-    protected override void OnSceneChanged(Scene arg0, Scene arg1)
-    {
-        gameObject.SetActive(true);
-        scoreSection.SetActive(false);
-        UpdateGoblinUI(0, GoblinCounter.Instance.TotalGoblins);
-    }
 
     void Update()
     {

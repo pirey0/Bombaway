@@ -94,7 +94,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
 
-        Score.Add(scorePerExplosion);
+        Score.Instance.Add(scorePerExplosion);
 
         var bs = GameObject.FindObjectsOfType<Bomb>();
         Debug.Log("Bombs Left: " + (bs.Length - 1));

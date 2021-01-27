@@ -10,14 +10,10 @@ public class Score : Singleton<Score>
 
     public int Amount { get => currentScore; }
 
-    protected override void OnSceneChanged(Scene arg0, Scene arg1)
-    {
-        currentScore = 0;
-    }
 
-    public static void Add(int amount)
+    public void Add(int amount)
     {
-        Instance.currentScore += amount;
+        currentScore += amount;
     }
 
 }
