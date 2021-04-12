@@ -6,8 +6,6 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Bomb : MonoBehaviour, IEffectable, IPickupable
 {
-    public static event System.Action OutOfBombs;
-
     [SerializeField] float triggerDuration;
     [SerializeField] float explosionRadius;
     [SerializeField] AnimationClip fuseAnimation;
@@ -96,13 +94,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
         Score.Instance.Add(scorePerExplosion);
 
-        var bs = GameObject.FindObjectsOfType<Bomb>();
-        Debug.Log("Bombs Left: " + (bs.Length - 1));
-
-        if (bs.Length <= 1)
-        {
-            OutOfBombs?.Invoke();
-        }
+        BombsAndGoblinsTracker.Instance.RemoveBomb();
     }
 
     private void OnDrawGizmos()

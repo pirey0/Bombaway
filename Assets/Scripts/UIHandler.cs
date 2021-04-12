@@ -21,25 +21,25 @@ public class UIHandler : Singleton<UIHandler>
 
     private void Start()
     {
-        Bomb.OutOfBombs += OnEnd;
-        GoblinCounter.Instance.CollectedAllGoblins += OnEnd;
-        GoblinCounter.Instance.GoblinAdded += OnGoblinAdded;
+        BombsAndGoblinsTracker.Instance.OutOfBombs += OnEnd;
+        BombsAndGoblinsTracker.Instance.CollectedAllGoblins += OnEnd;
+        BombsAndGoblinsTracker.Instance.GoblinAdded += OnGoblinAdded;
 
         gameObject.SetActive(true);
         scoreSection.SetActive(false);
-        UpdateGoblinUI(0, GoblinCounter.Instance.TotalGoblins);
+        UpdateGoblinUI(0, BombsAndGoblinsTracker.Instance.TotalGoblins);
     }
 
     private void OnGoblinAdded()
     {
-        UpdateGoblinUI(GoblinCounter.Instance.CollectedGoblins, GoblinCounter.Instance.TotalGoblins);
+        UpdateGoblinUI(BombsAndGoblinsTracker.Instance.CollectedGoblins, BombsAndGoblinsTracker.Instance.TotalGoblins);
     }
 
     private void OnEnd()
     {
         var bombs = GameObject.FindObjectsOfType<Bomb>();
 
-        ShowFinalScore(GoblinCounter.Instance.CollectedGoblins, GoblinCounter.Instance.TotalGoblins, bombs.Length, Score.Instance.Amount);
+        ShowFinalScore(BombsAndGoblinsTracker.Instance.CollectedGoblins, BombsAndGoblinsTracker.Instance.TotalGoblins, bombs.Length, Score.Instance.Amount);
     }
 
 
