@@ -1,11 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SetupDependencies
 {
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    public static void Setup()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    public static void InitializeRuntime()
+    {
+        UnityEngine.SceneManagement.SceneManager.activeSceneChanged += OnSceneChanged;
+    }
+
+    private static void OnSceneChanged(Scene arg0, Scene arg1)
+    {
+        SetupHandlers();
+    }
+
+    public static void SetupHandlers()
     {
         Debug.Log("Setting up dependencies.");
 
