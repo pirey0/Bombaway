@@ -16,15 +16,16 @@ public class GoblinCounter : Singleton<GoblinCounter>
     public int CollectedGoblins { get => Instance.count; }
     public int TotalGoblins { get => Instance.totalGoblins; }
 
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
         totalGoblins = GameObject.FindObjectsOfType<Goblin>().Length;
         count = 0;
     }
 
-    public void AddGoblin ()
+    public void AddGoblin()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             return;
         }
@@ -34,7 +35,7 @@ public class GoblinCounter : Singleton<GoblinCounter>
 
         GoblinAdded?.Invoke();
 
-        if(Instance.totalGoblins <= Instance.count)
+        if (Instance.totalGoblins <= Instance.count)
         {
             CollectedAllGoblins?.Invoke();
         }

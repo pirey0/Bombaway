@@ -19,12 +19,8 @@ public class SetupDependencies
         var sceneSettings = Resources.Load<SceneSettings>("SceneSettings");
         if (sceneSettings != null)
         {
-            GameObject prefab = null;
-            if (type == SceneType.GameScene)
-            {
-                prefab = sceneSettings.SceneInstanceHolder;
-            }
-            else if (type == SceneType.MainMenu)
+            GameObject prefab = sceneSettings.SceneInstanceHolder;
+            if (type == SceneType.MainMenu)
             {
                 prefab = sceneSettings.MainMenuInstanceHolder;
             }
@@ -40,9 +36,5 @@ public class SetupDependencies
             Debug.LogError("Error: No scene settings found in Resources.");
             Debug.Break();
         }
-
-
     }
-
-
 }

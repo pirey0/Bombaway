@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneInstanceHolder: {fileID: 5454148747328122047, guid: 3ce2b7ceb306fd34995ab893491fd37b,
     type: 3}
-  MainMenuInstanceHolder: {fileID: 0}
+  MainMenuInstanceHolder: {fileID: 5454148747328122047, guid: 3ce2b7ceb306fd34995ab893491fd37b,
+    type: 3}
