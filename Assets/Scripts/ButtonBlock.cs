@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class ButtonBlock : MonoBehaviour, IEffectable
+public class ButtonBlock : MonoBehaviour, IExplodingElement
 {
 
     [SerializeField] bool isExit;

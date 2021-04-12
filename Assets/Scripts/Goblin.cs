@@ -4,7 +4,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using System;
 
-public class Goblin : MonoBehaviour, IEffectable, IClickable
+public class Goblin : MonoBehaviour, IExplodingElement, IClickable
 {
 
     [SerializeField]

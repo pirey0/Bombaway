@@ -9,7 +9,7 @@ public class TutorialProgression : MonoBehaviour
 
     protected virtual void Start()
     {
-        tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
+        tutorial = GameObject.FindObjectOfType<Tutorial>();
         tutorial.AddStepThatNeedsToGetEnabled(stepToEnable);
     }
 

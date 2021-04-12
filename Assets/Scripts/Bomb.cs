@@ -4,7 +4,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class Bomb : MonoBehaviour, IEffectable, IPickupable
+public class Bomb : MonoBehaviour, IExplodingElement, IPickupable
 {
     [SerializeField] float triggerDuration;
     [SerializeField] float explosionRadius;
@@ -74,7 +74,7 @@ public class Bomb : MonoBehaviour, IEffectable, IPickupable
 
         foreach (var ef in effectables)
         {
-            var effectable = ef.GetComponent<IEffectable>();
+            var effectable = ef.GetComponent<IExplodingElement>();
 
             if (effectable == null)
             {
