@@ -5,7 +5,11 @@ using UnityEngine;
 public interface IExplodingElement 
 {
     void Explode(Bomb source);
+}
 
+public interface IAffectable
+{
+    void OnActivate(GameObject source);
 }
 
 public interface IPickupable

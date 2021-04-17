@@ -14,10 +14,21 @@ public class UIHandler : Singleton<UIHandler>
     [SerializeField]
     GameObject goblinUIPrefab;
 
+    [Header("Scores")]
     [SerializeField]
     GameObject scoreSection;
+
     [SerializeField]
-    TextMeshProUGUI scoreGnomes, scoreBombs, score;
+    TextMeshProUGUI totalScore;
+
+    [SerializeField]
+    TextMeshProUGUI bombsDescription, bombsScore;
+    [SerializeField]
+    TextMeshProUGUI goblinDescription, goblinScore;
+    [SerializeField]
+    TextMeshProUGUI blocksDescription, blocksScore;
+    [SerializeField]
+    TextMeshProUGUI timeDescription, timeScore;
 
     private void Start()
     {
@@ -38,8 +49,8 @@ public class UIHandler : Singleton<UIHandler>
     private void OnEnd()
     {
         var bombs = GameObject.FindObjectsOfType<Bomb>();
-
-        ShowFinalScore(BombsAndGoblinsTracker.Instance.CollectedGoblins, BombsAndGoblinsTracker.Instance.TotalGoblins, bombs.Length, Score.Instance.Amount);
+        Score.Instance.OnLevelEnd();
+        ShowFinalScore(BombsAndGoblinsTracker.Instance.CollectedGoblins, BombsAndGoblinsTracker.Instance.TotalGoblins, bombs.Length);
     }
 
 
@@ -80,12 +91,20 @@ public class UIHandler : Singleton<UIHandler>
         }
     }
 
-    public void ShowFinalScore(int gnomesCollected, int gnomesMax, int bombsLeft, int scoreFinal)
+    public void ShowFinalScore(int gnomesCollected, int gnomesMax, int bombsLeft)
     {
         scoreSection.SetActive(true);
-        scoreGnomes.text = gnomesCollected + " / " + gnomesMax + " Gnomes saved";
-        scoreBombs.text = bombsLeft + " bombs left";
-        score.text = scoreFinal.ToString();
+        goblinDescription.text = gnomesCollected + " / " + gnomesMax + " Gnomes saved";
+        bombsDescription.text = bombsLeft + " bombs left";
+        timeDescription.text = $"in {Score.Instance.TotalTime.ToString("0")} Seconds";
+        blocksDescription.text = "Destroyed x blocks";
+
+        //ToDo: missing custom coloring
+        goblinScore.text = Score.Instance.GetScoreFor(ScoreType.Goblin).ToString();
+        bombsScore.text = Score.Instance.GetScoreFor(ScoreType.Bomb).ToString();
+        blocksScore.text = Score.Instance.GetScoreFor(ScoreType.Bookshelf).ToString();
+        timeScore.text = Score.Instance.GetScoreFor(ScoreType.Time).ToString();
+        totalScore.text = Score.Instance.TotalScore.ToString();
     }
 
     public void ReturnToMenue()
@@ -104,3 +123,4 @@ public class UIHandler : Singleton<UIHandler>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
+

@@ -21,7 +21,7 @@ public class Bomb : MonoBehaviour, IExplodingElement, IPickupable
     Animator animator;
     Light2D light2d;
 
-    private void Start()
+    private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -70,29 +70,17 @@ public class Bomb : MonoBehaviour, IExplodingElement, IPickupable
         Debug.Log("Bomb explodes");
         exploded = true;
 
-        var effectables = GameObject.FindGameObjectsWithTag("Effectable");
+        var matches = BombsAndGoblinsUtility.FindAllEffectableComponentsInRange<IExplodingElement>(transform.position, explosionRadius);
 
-        foreach (var ef in effectables)
+        foreach (var m in matches)
         {
-            var effectable = ef.GetComponent<IExplodingElement>();
-
-            if (effectable == null)
-            {
-                continue;
-            }
-
-            var dist = Vector3.Distance(transform.position, ef.transform.position);
-
-            if (dist <= explosionRadius)
-            {
-                effectable.Explode(this);
-            }
+            m.Explode(this);
         }
 
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
 
-        Score.Instance.Add(scorePerExplosion);
+        Score.Instance.Add(ScoreType.Bomb, scorePerExplosion);
 
         BombsAndGoblinsTracker.Instance.RemoveBomb();
     }

@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyedGoblin: {fileID: 2376994287452440114, guid: ae72ea299b7729c4babbbb6716fa17e1,
     type: 3}
+  scoreForDeath: -500
 --- !u!1001 &3982351982468228882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,6 +103,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 615103194649007245}
     m_Modifications:
+    - target: {fileID: -7826874056376096239, guid: ed060754d3d37db43a006d4a786c2d15,
+        type: 3}
+      propertyPath: m_Name
+      value: goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: -6060842894531113814, guid: ed060754d3d37db43a006d4a786c2d15,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 8813280634906758198, guid: ed060754d3d37db43a006d4a786c2d15,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8813280634906758198, guid: ed060754d3d37db43a006d4a786c2d15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -116,6 +132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813280634906758198, guid: ed060754d3d37db43a006d4a786c2d15,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8813280634906758198, guid: ed060754d3d37db43a006d4a786c2d15,
         type: 3}
@@ -134,16 +155,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8813280634906758198, guid: ed060754d3d37db43a006d4a786c2d15,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8813280634906758198, guid: ed060754d3d37db43a006d4a786c2d15,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8813280634906758198, guid: ed060754d3d37db43a006d4a786c2d15,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -157,16 +168,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7826874056376096239, guid: ed060754d3d37db43a006d4a786c2d15,
-        type: 3}
-      propertyPath: m_Name
-      value: goblin
-      objectReference: {fileID: 0}
-    - target: {fileID: -6060842894531113814, guid: ed060754d3d37db43a006d4a786c2d15,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 7243324766535440047, guid: ed060754d3d37db43a006d4a786c2d15,
     type: 3}

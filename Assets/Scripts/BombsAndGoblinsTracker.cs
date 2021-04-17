@@ -34,7 +34,7 @@ public class BombsAndGoblinsTracker : Singleton<BombsAndGoblinsTracker>
         }
 
         Instance.goblinsCollected++;
-        Score.Instance.Add(Instance.scorePerGoblin);
+        Score.Instance.Add(ScoreType.Goblin, Instance.scorePerGoblin);
 
         GoblinAdded?.Invoke();
 

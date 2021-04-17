@@ -9,6 +9,7 @@ public class Destructable : MonoBehaviour, IExplodingElement
     GameObject destructedVersion;
 
     [SerializeField] int scorePerExplode;
+    [SerializeField] ScoreType scoreType;
 
     public void Explode(Bomb source)
     {
@@ -19,7 +20,7 @@ public class Destructable : MonoBehaviour, IExplodingElement
             Instantiate(destructedVersion, transform.position, Quaternion.identity);
         }
 
-        Score.Instance.Add(scorePerExplode);
+        Score.Instance.Add(scoreType, scorePerExplode);
         Destroy(gameObject);
     }
 }

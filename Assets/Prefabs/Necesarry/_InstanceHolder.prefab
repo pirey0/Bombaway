@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3580645e8717f43bf0c2e062c9aec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
-  scorePerGoblin: 100
+  scorePerGoblin: 200
 --- !u!114 &5454148746004113230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +58,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f868c15ab29896e429e3d61eefbaf2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
   holdForce: 1000
 --- !u!114 &5534694039340738173
 MonoBehaviour:
@@ -73,4 +71,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c493c9541dec9246bf7316f41c5c6e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1

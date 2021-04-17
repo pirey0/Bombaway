@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: f2f373307fbd0f644ae50e4cf75d1742
   - enabled: 1
+    path: Assets/Scenes/ShowcaseLevel.unity
+    guid: da747f7d24af1204389142b19505cacf
+  - enabled: 1
     path: Assets/Scenes/Luca.unity
     guid: cc26ef7e300630f45bb4b9cd9ac44899
   - enabled: 1
