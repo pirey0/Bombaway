@@ -17,7 +17,7 @@ public class Score : Singleton<Score>
     private int GetTotalScore()
     {
         float sum = scores.Sum();
-        sum = sum - sum % 10;
+        sum = Mathf.Max(0, sum - sum % 10);
         return Mathf.RoundToInt(sum);
     }
 

@@ -99,12 +99,22 @@ public class UIHandler : Singleton<UIHandler>
         timeDescription.text = $"in {Score.Instance.TotalTime.ToString("0")} Seconds";
         blocksDescription.text = "Destroyed x blocks";
 
-        //ToDo: missing custom coloring
-        goblinScore.text = Score.Instance.GetScoreFor(ScoreType.Goblin).ToString();
-        bombsScore.text = Score.Instance.GetScoreFor(ScoreType.Bomb).ToString();
-        blocksScore.text = Score.Instance.GetScoreFor(ScoreType.Bookshelf).ToString();
-        timeScore.text = Score.Instance.GetScoreFor(ScoreType.Time).ToString();
+        UpdateScore(ScoreType.Goblin, goblinScore);
+        UpdateScore(ScoreType.Bomb, bombsScore);
+        UpdateScore(ScoreType.Time, timeScore);
+        UpdateScore(ScoreType.Bookshelf, blocksScore);
+
         totalScore.text = Score.Instance.TotalScore.ToString();
+    }
+
+    private void UpdateScore(ScoreType type, TMPro.TMP_Text text)
+    {
+        int score = Score.Instance.GetScoreFor(type);
+        if (score < 0)
+        {
+            text.color = Color.red;
+        }
+        text.text = score.ToString();
     }
 
     public void ReturnToMenue()
