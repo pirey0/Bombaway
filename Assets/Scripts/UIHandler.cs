@@ -43,14 +43,20 @@ public class UIHandler : Singleton<UIHandler>
 
     private void OnGoblinAdded()
     {
-        UpdateGoblinUI(BombsAndGoblinsTracker.Instance.CollectedGoblins, BombsAndGoblinsTracker.Instance.TotalGoblins);
+        int collectedGoblins = BombsAndGoblinsTracker.Instance.CollectedGoblins;
+        int totalGoblins = BombsAndGoblinsTracker.Instance.TotalGoblins;
+        UpdateGoblinUI(collectedGoblins, totalGoblins);
     }
 
     private void OnEnd()
     {
-        var bombs = GameObject.FindObjectsOfType<Bomb>();
+        //This should not be called in the UI
         Score.Instance.OnLevelEnd();
-        ShowFinalScore(BombsAndGoblinsTracker.Instance.CollectedGoblins, BombsAndGoblinsTracker.Instance.TotalGoblins, bombs.Length);
+
+        var bombs = GameObject.FindObjectsOfType<Bomb>();
+        int collectedGoblins = BombsAndGoblinsTracker.Instance.CollectedGoblins;
+        int totalGoblins = BombsAndGoblinsTracker.Instance.TotalGoblins;
+        ShowFinalScore(collectedGoblins, totalGoblins, bombs.Length);
     }
 
 

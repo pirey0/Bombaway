@@ -11,7 +11,7 @@ public class Dispenser : MonoBehaviour, IAffectable
 
     public void OnActivate(GameObject source)
     {
-        if (!prototypePrefab) return;
+        if (!prototypePrefab || !spawnLocation) return;
 
         var instance = Instantiate(prototypePrefab, spawnLocation.position, Quaternion.identity);
         var rb = instance.GetComponent<Rigidbody2D>();

@@ -6,7 +6,6 @@ public class Selfdestruction : MonoBehaviour
 {
     [SerializeField] bool destroy;
 
-    // Update is called once per frame
     void Update()
     {
         if (destroy)
